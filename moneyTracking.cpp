@@ -1,6 +1,7 @@
 #include <iostream> //std:: cout && std::cin
 #include <fstream>  //used to actually be able to work with files
-#include<string>    //used to work with strings instead of char[lenght]
+#include <string>    //used to work with strings instead of char[lenght]
+#include <ctype.h>   //used to check if the input given by the user is an int or not
 using namespace std;
 
 //draws a table to show the choices the user can make
@@ -30,6 +31,7 @@ void write(){
         /*using blanks stops the cin, you can keep typing but'll write only 'till the first blank
           also instantly closes the while(choice != 0) in main()*/
         cin >> insertedText;
+        //getline(cin, insertedText);
 
         myfile << insertedText << "\n";
         cout << "Output operation successfully performed" << endl;
@@ -51,6 +53,21 @@ void read(){
 }
 
 
+//choice must be a char to work, but with a char the main code won't work, finding another solution 
+
+//checks if the input given is actually a number and not a char
+int checkInputIsInt(int choice){
+    //while the input isn't a number ask a reinput
+    while(cin.fail()){
+        cin.clear();
+        cin.ignore();
+        cout << "your choice must be a number, try again: ";
+        cin >> choice;
+    }
+    return choice;
+}
+
+
 int main(){
 
     int choice;
@@ -59,6 +76,18 @@ int main(){
 
     cout << "insert your choice: ";
     cin >> choice;
+
+    checkInputIsInt(choice);
+    /*
+    while(cin.fail()){
+        cin.clear();
+        cin.ignore();
+        cout << "your choice must be a number, try again: ";
+        cin >> choice;
+    }
+    */
+
+    
     cout << endl;
 
     //loop to make the user make different choices without re-running the program, also checks for non-existing choices
@@ -72,14 +101,35 @@ int main(){
             default: 
                 cout << "choice not available" << endl;
                 drawTable();
-                cout << "insert an existing one: ";
-                cin >> choice;
+                cout << "insert an existing one: " << endl;
+
+                checkInputIsInt(choice);
+                /*
+                while(cin.fail()){
+                    cin.clear();
+                    cin.ignore();
+                    cout << "your choice must be a number, try again: ";
+                    cin >> choice;
+                }
+                */
+                
+                //cin >> choice;
                 break;
         }
 
         drawTable();
         cout << "insert your choice: ";
         cin >> choice;
+
+        checkInputIsInt(choice);
+        /*
+        while(cin.fail()){
+            cin.clear();
+            cin.ignore();
+            cout << "your choice must be a number, try again: ";
+            cin >> choice;
+        }
+        */
     }
 
     
