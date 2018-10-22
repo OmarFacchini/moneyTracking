@@ -77,7 +77,7 @@ int main(){
     cout << "insert your choice: ";
     cin >> choice;
 
-    checkInputIsInt(choice);
+    choice = checkInputIsInt(choice);
     /*
     while(cin.fail()){
         cin.clear();
@@ -100,10 +100,10 @@ int main(){
                     break;
             default: 
                 cout << "choice not available" << endl;
-                drawTable();
+                //drawTable();
                 cout << "insert an existing one: " << endl;
 
-                checkInputIsInt(choice);
+                 choice = checkInputIsInt(choice);
                 /*
                 while(cin.fail()){
                     cin.clear();
@@ -121,7 +121,7 @@ int main(){
         cout << "insert your choice: ";
         cin >> choice;
 
-        checkInputIsInt(choice);
+        choice = checkInputIsInt(choice);
         /*
         while(cin.fail()){
             cin.clear();
