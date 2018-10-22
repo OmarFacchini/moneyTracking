@@ -1,7 +1,7 @@
-#include <iostream> //std:: cout && std::cin
+#include <iostream> //common input and output
 #include <fstream>  //used to actually be able to work with files
 #include <string>   //used to work with strings instead of char[lenght]
-#include <ctype.h>  //used to check if the input given by the user is an int or not
+//#include <ctype.h>  //used to check if the input given by the user is an int or not
 using namespace std;
 
 //draws a table to show the choices the user can make
@@ -20,19 +20,21 @@ void write(){
     string insertedText;
     ofstream myfile;
 
-    cout << "insert file name: ";
+    cout << "insert file name with no spaces: ";
     cin >> fileName;
     fileName += ".txt";
+    cin.clear();
+    cin.ignore();
+
 
     myfile.open(fileName);
 
     if(myfile.is_open()){
 
-        cout << "insert your text: ";
-        /*using blanks stops the cin, you can keep typing but'll write only 'till the first blank
-          also instantly closes the while(choice != 0) in main()*/
-        cin >> insertedText;
-        //getline(cin, insertedText);
+        cout << "insert your text: " << endl;
+        /*using blanks stops the cin, that's why you want to use getline()*/
+        getline(cin, insertedText);
+        
 
         myfile << insertedText << "\n";
         cout << "Output operation successfully performed" << endl;
