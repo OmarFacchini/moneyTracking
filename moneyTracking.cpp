@@ -22,7 +22,11 @@ void write(){
 
     cout << "insert file name with no spaces: ";
     cin >> fileName;
+
+    //working only on .txt files just to make things easier, allow the user to choose the format would be a suicide basically.
     fileName += ".txt";
+
+    //the following two lines are used to "close and clear" the cin function, otherwise getline wouldn't work properly working as a cin
     cin.clear();
     cin.ignore();
 
@@ -50,10 +54,26 @@ void write(){
 
 //asks for a txt file to read, if exists reads and prints it on console
 //also checks for errors while opening it
+//reading and printing the content of testing.txt
 void read(){
-    
- //TODO
- 
+
+    string fileName;
+    string readLine;
+
+    cout << "insert file name with no spaces: ";
+    cin >> fileName;
+
+    //working only on .txt files just to make things easier, allow the user to choose the format would be a suicide basically.
+    fileName += ".txt";
+    ifstream myFile(fileName);
+
+    if(myFile.is_open()){
+        while(getline(myFile,readLine)){
+            cout << readLine << endl;
+        }
+        myFile.close();
+    } 
+    cout << endl;
 }
 
 
@@ -104,21 +124,6 @@ int main(){
         choice = checkInputIsInt(choice);
     }
   
-
-    /*
-
-    //reading and printing the content of testing.txt
-    string line;
-    std::ifstream myFile("testing.txt");
-
-    if(myFile.is_open){
-        while(getline(myFile,line)){
-            cout << line << '\n';
-        }
-        myFile.close();
-    }
-
-    */
 
     return 0;
 }
