@@ -36,16 +36,12 @@ void write(){
     if(myfile.is_open()){
 
         cout << "insert your text: " << endl;
-        /*using blanks stops the cin, that's why you want to use getline()*/
-        //getline(cin, insertedText);
 
+        /*using blanks stops the cin, that's why you want to use getline()
+          also using a while loop to allow the user to insert multiple lines*/
         while(getline(cin, insertedText) && insertedText != ""){
             myfile << insertedText << "\n";
         }
-        
-
-        /*myfile << insertedText << "\n";
-        cout << "Output operation successfully performed" << endl;*/
 
         myfile.close();
     }
