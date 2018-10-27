@@ -8,7 +8,7 @@ it allows to insert multiple lines of text, but it stops when given a blank.
 
 ## file format example:
 ```
-### this is ok: 
+this is ok: 
 line1 
 line2 
 line3 
