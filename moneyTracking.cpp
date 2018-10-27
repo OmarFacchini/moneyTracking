@@ -37,11 +37,15 @@ void write(){
 
         cout << "insert your text: " << endl;
         /*using blanks stops the cin, that's why you want to use getline()*/
-        getline(cin, insertedText);
+        //getline(cin, insertedText);
+
+        while(getline(cin, insertedText) && insertedText != ""){
+            myfile << insertedText << "\n";
+        }
         
 
-        myfile << insertedText << "\n";
-        cout << "Output operation successfully performed" << endl;
+        /*myfile << insertedText << "\n";
+        cout << "Output operation successfully performed" << endl;*/
 
         myfile.close();
     }
