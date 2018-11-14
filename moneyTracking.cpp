@@ -7,8 +7,8 @@ using namespace std;
 //draws a table to show the choices the user can make
 void drawTable(){
     cout << "0 - exit" << endl 
-         << "1 - write on file" << endl
-         << "2- read from file" << endl
+         << "1 - write a new file" << endl
+         << "2- read a whole file" << endl
          << endl;
 }
 
@@ -31,14 +31,17 @@ void write(){
     cin.ignore();
 
 
+    //used to check if the file is available or if it can't be opened
     myfile.open(fileName);
 
     if(myfile.is_open()){
 
-        cout << "insert your text: " << endl;
+        cout << "inserting a blank line means you're done writing on that file" //explaining the user how to stop writing on a file  
+             << "insert your text: " << endl;
 
         /*using blanks stops the cin, that's why you want to use getline()
-          also using a while loop to allow the user to insert multiple lines*/
+          also using a while loop to allow the user to insert multiple lines
+          using a blank line to stop the loop because it's easier for the user*/
         while(getline(cin, insertedText) && insertedText != ""){
             myfile << insertedText << "\n";
         }
@@ -46,8 +49,12 @@ void write(){
         myfile.close();
     }
     else{
-        cout << "Error opening file";
+        cout << "Error opening file" << endl;
     }
+
+}
+
+void update(){
 
 }
 
@@ -72,8 +79,18 @@ void read(){
             cout << readLine << endl;
         }
         myFile.close();
-    } 
-    cout << endl;
+    }
+    else cout << "file doesn't exist" << endl << endl; 
+}
+
+void findWord(string wordToFind, string fileName, string sentence){
+    /*
+    bool found = false;
+
+    while(std::string::npos != sentence.find(wordToFind)){
+
+    }*/
+
 }
 
 
@@ -89,7 +106,7 @@ int checkInputIsInt(int choice){
     return choice;
 }
 
-
+//well, that's the main, you know what it does, calls the functions above
 int main(){
 
     int choice;
